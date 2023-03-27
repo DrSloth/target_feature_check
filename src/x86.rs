@@ -1,3 +1,6 @@
+//! x86_64 and x86 feature detection
+
+/// Add all detected features from the $feature list to the $store vector
 macro_rules! add_detected_features {
     ($store:ident, $($feature:tt)*) => {
         $(
@@ -8,6 +11,7 @@ macro_rules! add_detected_features {
     }
 }
 
+/// Get the current detected x86 features.
 pub fn get_target_features() -> Vec<&'static str> {
     // The features that are commented out are checkable but not recognized by rustc, maybe they
     // are just implied?

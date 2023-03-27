@@ -1,5 +1,6 @@
-use std::io::{self, Write};
+//! Output all target features the current device supports
 
+use std::io::{self, Write};
 
 fn main() -> io::Result<()> {
     let mut stdout = io::stdout().lock();
@@ -7,6 +8,7 @@ fn main() -> io::Result<()> {
     output_features(&features, &mut stdout)
 }
 
+/// Output all given features to stdout as a feature list
 fn output_features<W: Write>(features: &[&str], writer: &mut W) -> io::Result<()> {
     let mut features = features.iter();
     match features.next() {
