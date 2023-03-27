@@ -2,10 +2,12 @@
 
 use std::io::{self, Write};
 
-fn main() -> io::Result<()> {
+fn main() {
     let mut stdout = io::stdout().lock();
     let features = target_feature_check::get_target_features();
-    output_features(&features, &mut stdout)
+    if let Err(e) = output_features(&features, &mut stdout) {
+        eprintln!("Error while writing to stdout: {}", e)
+    }
 }
 
 /// Output all given features to stdout as a feature list
